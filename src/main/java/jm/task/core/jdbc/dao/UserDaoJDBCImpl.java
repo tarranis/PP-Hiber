@@ -11,7 +11,6 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     Connection connection = Util.getConnection();
-
     private String CREATEUSERSTABLE = "CREATE TABLE IF NOT EXISTS users(id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), lastname VARCHAR(50), age TINYINT)";
     private String DROPUSERTABLE = "DROP TABLE IF EXISTS users";
     private String SAVEUSER = "INSERT INTO users (name, lastname, age) VALUES (?, ?, ?)";
