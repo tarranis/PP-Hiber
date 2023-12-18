@@ -30,7 +30,7 @@ public class Util {
                 connection = DriverManager.getConnection(CONNECTIONURL, USERNAME, PASSWORD);
             }
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return connection;
     }
@@ -61,7 +61,7 @@ public class Util {
                 Metadata metadata = metadataSources.getMetadataBuilder().build();
                 sessionFactory = metadata.getSessionFactoryBuilder().build();
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         return sessionFactory;

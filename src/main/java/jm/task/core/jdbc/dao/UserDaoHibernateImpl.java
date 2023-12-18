@@ -12,8 +12,8 @@ import java.util.List;
 public class UserDaoHibernateImpl implements UserDao {
     SessionFactory sessionFactory = Util.getSessionFactory();
     Transaction transaction;
-    private String CREATEUSERSTABLE = "CREATE TABLE IF NOT EXISTS users(id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), lastname VARCHAR(50), age TINYINT)";
-    private String DROPUSERTABLE = "DROP TABLE IF EXISTS users";
+    final static String CREATEUSERSTABLE = "CREATE TABLE IF NOT EXISTS users(id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), lastname VARCHAR(50), age TINYINT)";
+    final static String DROPUSERTABLE = "DROP TABLE IF EXISTS users";
     public UserDaoHibernateImpl() {
 
     }
@@ -28,7 +28,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -42,7 +42,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -60,7 +60,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -74,7 +74,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -95,7 +95,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

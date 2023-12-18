@@ -11,12 +11,12 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     Connection connection = Util.getConnection();
-    private String CREATEUSERSTABLE = "CREATE TABLE IF NOT EXISTS users(id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), lastname VARCHAR(50), age TINYINT)";
-    private String DROPUSERTABLE = "DROP TABLE IF EXISTS users";
-    private String SAVEUSER = "INSERT INTO users (name, lastname, age) VALUES (?, ?, ?)";
-    private String REMOVEUSERBYID = "DELETE FROM users WHERE id = ?";
-    private String GETALLUSERS = "SELECT * FROM users";
-    private String CLEANUSERSTABLE = "DELETE FROM users";
+    final static String CREATEUSERSTABLE = "CREATE TABLE IF NOT EXISTS users(id BIGINT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), lastname VARCHAR(50), age TINYINT)";
+    final static String DROPUSERTABLE = "DROP TABLE IF EXISTS users";
+    final static String SAVEUSER = "INSERT INTO users (name, lastname, age) VALUES (?, ?, ?)";
+    final static String REMOVEUSERBYID = "DELETE FROM users WHERE id = ?";
+    final static String GETALLUSERS = "SELECT * FROM users";
+    final static String CLEANUSERSTABLE = "DELETE FROM users";
 
     public UserDaoJDBCImpl() {
 
@@ -26,7 +26,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try(Statement statement = connection.createStatement()) {
             statement.executeUpdate(CREATEUSERSTABLE);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try(Statement statement = connection.createStatement()) {
             statement.executeUpdate(DROPUSERTABLE);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -45,7 +45,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setByte(3, age);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -54,7 +54,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -72,7 +72,7 @@ public class UserDaoJDBCImpl implements UserDao {
             }
             resultSet.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try(Statement statement = connection.createStatement()) {
             statement.executeUpdate(CLEANUSERSTABLE);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
